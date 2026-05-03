@@ -1,10 +1,21 @@
+import os
 import requests
 
-print("🚀 Canvas bot starting...")
+print("🚀 Canvas bot running in cloud...")
 
-BASE_URL = "https://sycamoreschools.instructure.com"
+CANVAS_TOKEN = os.getenv("CANVAS_TOKEN")
 
-# TEMP TEST (no tokens yet)
-r = requests.get("https://api.github.com")
+headers = {
+    "Authorization": f"Bearer {CANVAS_TOKEN}"
+}
 
-print("GitHub test status:", r.status_code)
+res = requests.get(
+    "https://sycamoreschools.instructure.com/api/v1/users/self/courses",
+    headers=headers
+)
+
+print("Canvas status:", res.status_code)
+
+data = res.json()
+
+print("Number of courses:", len(data))
