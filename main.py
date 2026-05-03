@@ -22,9 +22,14 @@ res = requests.get(
 
 print("Canvas status:", res.status_code)
 
-try:
-    data = res.json()
-    print("Number of courses:", len(data))
-except Exception as e:
-    print("JSON error:", e)
-    print("Raw response:", res.text)
+data = res.json()
+
+for item in data:
+    assignment = item.get("assignment", {})
+    
+    name = assignment.get("name")
+    due = assignment.get("due_at")
+
+    print("Task:", name)
+    print("Due:", due)
+    print("---")
