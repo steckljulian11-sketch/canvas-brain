@@ -16,7 +16,7 @@ headers = {
 }
 
 res = requests.get(
-    "https://sycamoreschools.instructure.com/api/v1/users/self/courses",
+    "https://sycamoreschools.instructure.com/api/v1/users/self/todo",
     headers=headers
 )
 
