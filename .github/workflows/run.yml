@@ -19,7 +19,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests notion-client openai
+        run: pip install requests notion-client anthropic
 
       - name: Run script
         run: python main.py
